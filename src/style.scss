@@ -1,0 +1,100 @@
+@import 'node_modules/jeet/scss/index';
+@import 'node_modules/rupture-sass/rupture';
+@import 'reset';
+
+// styles
+$ipad: 768px;
+$mobile: 540px;
+
+section {
+    @include clearfix;
+    margin-top: 10px;
+}
+
+.block {
+    box-sizing: border-box;
+}
+
+@include debug();
+
+.wrapper {
+    // 居中，最大宽为1000px
+    @include center(1000px);
+
+    .side {
+        // 多列，且间隔为5%
+        @include column(1/4, $gutter: 2);
+    }
+    
+    .article {
+        // 多列，且间隔为5%
+        @include column(3/4, $gutter: 2);
+    }
+
+    @include below($mobile) {
+        .side {
+            @include stack()
+        }
+        .article {
+            @include stack();
+            margin-top: 10px;
+        }
+    }
+}
+
+.api-uncycle {
+    @include clearfix;
+    .block {
+        @include column(1/3);
+    }
+}
+
+.api-cycle {
+    // 清除浮动
+    @include clearfix;
+    .block {
+        // $cycle可以理解为第3个周期元素的margin-right为0
+        @include column(1/4);
+        margin-top: 10px;
+        box-sizing: border-box;
+
+        // 小于且等于$mobile
+        @include below($ipad) {
+            @include column(1/2, $cycle: 2);
+        }
+
+        @include below($mobile) {
+            @include stack($pad: 10px);
+        }
+    }
+}
+
+.api-span {
+    .block {
+        @include span(1/5)
+    }
+}
+
+.api-move {
+    .block {
+        @include move(1/4);
+        @include column(3/4);
+    }
+}
+
+.api-align {
+    position: relative;
+    height: 100px;
+    .block {
+        &.hv {
+            @include align()
+        }
+        &.h {
+            @include align('h')
+        }
+        &.v {
+            @include align('v')
+        }
+    }
+}
+

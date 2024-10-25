@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="side">
+            side
+        </div>
+        <div class="article">
+            article
+            <section>
+                <p>没有设置<code>$cycle</code>：</p>
+                <div class="api-uncycle">
+                    <span class="block">1</span>
+                    <span class="block">2</span>
+                    <span class="block">3</span>
+                    <span class="block">4</span>
+                </div>
+            </section>
+
+            <section>
+                <p>设置了<code>$cycle</code>且带有响应式：</p>
+                <div class="api-cycle">
+                    <span class="block">1</span>
+                    <span class="block">2</span>
+                    <span class="block">3</span>
+                    <span class="block">4</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="api-span">
+                    <span class="block">1</span>
+                    <span class="block">2</span>
+                    <span class="block">3</span>
+                    <span class="block">4</span>
+                    <span class="block">5</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="api-move">
+                    <span class="block">1</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="api-align">
+                    <span class="block hv">align h and v</span>
+                    <span class="block h">align h</span>
+                    <span class="block v">align v</span>
+                </div>
+            </section>
+            
+            
+        </div>
+    </div>
+    
+</body>
+</html>
