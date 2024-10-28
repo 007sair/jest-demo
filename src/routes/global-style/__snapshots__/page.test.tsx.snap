@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalStylePage should match snapshot in GlobalStyle.tsx 1`] = `
+<body>
+  <div>
+    
+  body {
+    background-color: red;
+  }
+
+  </div>
+</body>
+`;

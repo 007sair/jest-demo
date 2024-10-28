@@ -15,7 +15,7 @@
       "quoteStyle": "single",
       "arrowParentheses": "asNeeded",
       "jsxQuoteStyle": "double",
-      "lineWidth": 80
+      "lineWidth": 120
     }
   },
   "linter": {

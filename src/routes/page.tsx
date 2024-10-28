@@ -11,7 +11,7 @@ const Index = () => (
       />
     </Helmet>
     <main>
-      <div className="title">
+      <h1 className="title">
         Welcome to
         <img
           className="logo"
@@ -19,7 +19,7 @@ const Index = () => (
           alt="Modern.js Logo"
         />
         <p className="name">Modern.js</p>
-      </div>
+      </h1>
       <p className="description">
         Get started by editing <code className="code">src/routes/page.tsx</code>
       </p>
@@ -56,12 +56,7 @@ const Index = () => (
           </h2>
           <p>Learn to use Modern.js to create your first application.</p>
         </a>
-        <a
-          href="https://modernjs.dev/configure/app/usage.html"
-          target="_blank"
-          className="card"
-          rel="noreferrer"
-        >
+        <a href="https://modernjs.dev/configure/app/usage.html" target="_blank" className="card" rel="noreferrer">
           <h2>
             Config
             <img
@@ -72,12 +67,7 @@ const Index = () => (
           </h2>
           <p>Find all configuration options provided by Modern.js.</p>
         </a>
-        <a
-          href="https://github.com/web-infra-dev/modern.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="card"
-        >
+        <a href="https://github.com/web-infra-dev/modern.js" target="_blank" rel="noopener noreferrer" className="card">
           <h2>
             Github
             <img
