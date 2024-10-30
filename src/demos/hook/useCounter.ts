@@ -1,7 +1,13 @@
 import { useState } from 'react';
 
 export function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue);
+  if (typeof initialValue !== 'number' && initialValue !== undefined) {
+    throw new Error('Initial value must be a number or undefined');
+  }
+  const [count, setCount] = useState(initialValue ?? 0);
+
   const increment = () => setCount(count + 1);
-  return { count, increment };
+  const decrement = () => setCount(count - 1);
+
+  return { count, increment, decrement };
 }
