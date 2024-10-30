@@ -1,7 +1,90 @@
+# 异步测试
 
-# user.test.ts 记录
+## 异步测试与同步测试的区别
 
-## global.fetch 的报错信息
+**基本差异：**
+
+- 同步测试：直接写断言，测试立即执行完成
+- 异步测试：需要告诉 jest 等待异步操作完成，否则测试可能在异步操作完成前就结束。
+
+**写法上的区别：**
+
+- 使用 done()
+- async、await
+- 返回 Promise
+
+> 见 [async.test.ts](./async.test.ts)
+
+**超时处理：**
+
+- 同步测试：通常立即完成，很少考虑超时
+- 异步测试：需要考虑超时设置，可以通过 Jest 的 timeout 选项设置
+
+```js
+jest.setTimeout(10000); // 全局设置
+
+test('异步操作', async () => {
+  // ...
+}, 5000); // 单个测试设置
+```
+
+**错误处理方式：**
+
+- 同步测试：直接使用 try-catch 或 expect 捕获错误
+- 异步测试：需要特别注意 Promise 的错误处理
+
+```js
+// 异步测试中的错误处理
+test('异步错误测试', async () => {
+  expect.assertions(1); // 确保断言被调用
+  try {
+    await failingAsyncOperation();
+  } catch (error) {
+    expect(error).toMatch('failed');
+  }
+});
+```
+
+**常见陷阱和注意事项：**
+
+1. 异步测试忘记等待：
+
+```js
+// ❌ 错误示范
+test('异步测试', () => {
+  fetchData().then(data => {
+    expect(data).toBe('success'); // 测试可能在断言执行前就结束了
+  });
+});
+
+// ✅ 正确写法
+test('异步测试', () => {
+  return fetchData().then(data => {
+    expect(data).toBe('success');
+  });
+});
+```
+
+2. Promise 错误处理：
+
+```js
+// ✅ 测试 Promise 拒绝
+test('异步拒绝测试', () => {
+  return expect(failingAsyncOperation()).rejects.toMatch('error');
+});
+```
+
+**最佳实践建议：**
+
+- 优先使用 async/await，代码更清晰
+- 总是确保异步测试等待完成
+- 适当设置超时时间
+- 使用 expect.assertions() 确保断言被执行
+- 对于 Promise 的测试，记得处理成功和失败两种情况
+
+## user.test.ts 记录
+
+### global.fetch 的报错信息
 
 ```
 不能将类型“Mock<Promise<{ ok: false; }>, [], any>”分配给类型“(input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>”。
