@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
-import { AsyncData, AsyncForm, DelayedShow } from './page';
+import Page, { AsyncData, AsyncForm, DelayedShow } from './page';
 
 describe('AsyncData', () => {
   // 1. 等待异步数据加载
@@ -88,5 +88,12 @@ describe('AsyncData', () => {
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
     });
+  });
+});
+
+describe('Page.tsx', () => {
+  test('should match snapshot', () => {
+    const { asFragment } = render(<Page />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

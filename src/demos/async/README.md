@@ -84,7 +84,7 @@ test('异步拒绝测试', () => {
 
 ## user.test.ts 记录
 
-### global.fetch 的报错信息
+### global.fetch 的 TypeScript 报错信息
 
 ```
 不能将类型“Mock<Promise<{ ok: false; }>, [], any>”分配给类型“(input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>”。
@@ -176,25 +176,23 @@ test('成功获取用户数据', async () => {
 推荐使用的方案：
 
 1. 对于小型项目或简单测试，使用方案 2（类型断言）是最简洁的解决方案。
-
 2. 对于较大的项目，推荐使用方案 3（jest-fetch-mock 库），因为：
 
-  - 提供了更完整的 fetch mock 功能
-  - 处理了所有类型问题
-  - 提供了更多有用的辅助方法
-  - 更容易维护
+    - 提供了更完整的 fetch mock 功能
+    - 处理了所有类型问题
+    - 提供了更多有用的辅助方法
+    - 更容易维护
 
-安装 jest-fetch-mock：
+安装 `jest-fetch-mock`：
 
 ```bash
 npm install --save-dev jest-fetch-mock
 ```
 
-在 setupTests.ts 中配置：
+在 `jest.setup.ts` 中配置：
 
 ```ts
 import fetchMock from 'jest-fetch-mock';
-
 fetchMock.enableMocks();
 ```
 

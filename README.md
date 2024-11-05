@@ -1,37 +1,36 @@
-# Modern.js App
+# Jest Demo
 
-## Setup
+build by [modernjs](https://modernjs.dev/)
 
-Install the dependencies:
+## 安装
 
 ```bash
+# 安装依赖
 pnpm install
-```
 
-## Get Started
-
-Start the dev server:
-
-```bash
+# 启动服务
 pnpm dev
 ```
 
-Enable optional features or add a new entry:
+## 介绍
 
-```bash
-pnpm new
-```
+此仓库用于 jest 学习、演示，Demo 主要有以下几类：
 
-Build the app for production:
+- [jest 配置过程](./README.jest.md)
 
-```bash
-pnpm build
-```
+测试 Demo：
 
-Preview the production build locally:
+- [快照测试](./src/demos/snapshot/)
+- [异步测试](./src/demos/async/README.md)
+- [交互测试](./src/demos/events/README.md)
+- [Hooks测试](./src/demos/hook/README.md)
+- [Mock清理](./src/demos/mock-clear/README.md)
+- [jest.mock 使用](./src/demos/service/README.md)
+- [jest.mock 提升](./src/demos/mock-hoist/README.md)
+- [jest.spyOn](./src/demos/spyOn/README.md)
 
-```bash
-pnpm serve
-```
+还有一些带有可以通过访问页面查看页面的demo：
 
-For more information, see the [Modern.js documentation](https://modernjs.dev/en).
+- act: [act](./src/routes/act/README.md)
+- global style: [GlobalStyle](./src/routes/global-style/README.md)
+- waitFor: [wait-for](./src/routes/wait-for/README.md)

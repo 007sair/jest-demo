@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page.tsx should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    Loading...
+  </div>
+  <div>
+    <button
+      type="button"
+    >
+      Show Message
+    </button>
+  </div>
+  <form
+    role="form"
+  >
+    <input
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</DocumentFragment>
+`;

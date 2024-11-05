@@ -19,28 +19,54 @@
  *})
  * ```
  */
+import type { DefaultTheme } from '@modern-js/runtime/styled';
 import React from 'react';
 
-function interleave(strings, interpolations) {
+interface ThemeProps {
+  theme: Partial<DefaultTheme>;
+  fns: Array<(props: { theme: Partial<DefaultTheme> }) => string | number>;
+}
+
+type GlobalStyleFunction = (props: { theme: ThemeProps['theme'] }) => string;
+
+function interleave(strings: TemplateStringsArray, interpolations: Array<string | number>): string {
   const result = [strings[0]];
+
   for (let i = 0, len = interpolations.length; i < len; i += 1) {
     result.push(interpolations[i].toString(), strings[i + 1]);
   }
+
   return result.join('');
 }
 
-const injectTheme = (css, { theme, fns }) =>
+const injectTheme = (css: TemplateStringsArray, { theme, fns }: ThemeProps): string =>
   interleave(
     css,
     fns.map(fn => fn({ theme })),
   );
 
-const _createGlobalStyle = (css, ...fns) => {
-  return ({ theme }) => injectTheme(css, { theme, fns });
+const _createGlobalStyle = (
+  css: TemplateStringsArray,
+  ...fns: Array<(props: { theme: ThemeProps['theme'] }) => string | number>
+): GlobalStyleFunction => {
+  return ({ theme }: { theme: ThemeProps['theme'] }) => injectTheme(css, { theme, fns });
 };
 
-export const createGlobalStyle = jest.fn(_createGlobalStyle);
+const createGlobalStyle = jest.fn(_createGlobalStyle);
 
-export const ThemeProvider = ({ children, theme = { colorPrimary: 'red' } }) => {
+const ThemeProvider = ({
+  children,
+  theme = { colorPrimary: 'red' },
+}: { children: JSX.Element; theme: Partial<DefaultTheme> }) => {
   return React.cloneElement(children, { theme });
+};
+
+// 获取实际模块
+const actualStyled = jest.requireActual('@modern-js/runtime/styled');
+
+module.exports = {
+  __esModule: true,
+  ...actualStyled,
+  createGlobalStyle,
+  ThemeProvider,
 };

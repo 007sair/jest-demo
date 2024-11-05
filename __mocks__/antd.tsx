@@ -1,3 +1,4 @@
+import type { ColorPickerProps } from 'antd';
 import React from 'react';
 
 // 模拟的主题数据
@@ -16,8 +17,14 @@ const theme = {
   // 如果需要，可以添加其他主题相关的方法
 };
 
+const notification = {
+  success: jest.fn(),
+  error: jest.fn(),
+};
+
 // 模拟 ColorPicker
-const ColorPicker = ({ value, onChangeComplete, showText }) => (
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const ColorPicker = ({ value, onChangeComplete, showText }: any) => (
   <div data-testid="antd-color-picker">
     <input
       type="color"
@@ -33,6 +40,7 @@ const ColorPicker = ({ value, onChangeComplete, showText }) => (
 module.exports = {
   ...actualAntd, // 保留其他实际的 antd 功能
   theme,
+  notification,
   ColorPicker,
 };
 

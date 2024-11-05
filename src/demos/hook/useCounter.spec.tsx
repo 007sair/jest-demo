@@ -36,6 +36,7 @@ describe('使用 renderHook 测试', () => {
 
   test('should increment counter', () => {
     const { result } = renderHook(() => useCounter());
+    expect(result.current.count).toBe(0);
     act(() => {
       result.current.increment();
     });
@@ -50,16 +51,25 @@ describe('使用 renderHook 测试', () => {
     expect(result.current.count).toBe(-1);
   });
 
+  // 测试 errors 的用例时，禁用异常导致控制台出现 console.error 的报错信息
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   test('should handle errors gracefully', () => {
     // 使用 try-catch 捕获预期中的错误
     expect(() => {
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       renderHook(() => useCounter('invalid' as any));
-    }).toThrow();
+    }).toThrowError('Initial value must be a number or undefined');
 
     expect(() => {
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       renderHook(() => useCounter(null as any));
-    }).toThrow();
+    }).toThrowError('Initial value must be a number or undefined');
   });
 });
