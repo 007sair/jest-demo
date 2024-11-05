@@ -20,13 +20,14 @@ pnpm dev
 
 测试 Demo：
 
-- [快照测试](./src/demos/snapshot/)
 - [异步测试](./src/demos/async/README.md)
 - [交互测试](./src/demos/events/README.md)
 - [Hooks测试](./src/demos/hook/README.md)
 - [Mock清理](./src/demos/mock-clear/README.md)
-- [jest.mock 使用](./src/demos/service/README.md)
 - [jest.mock 提升](./src/demos/mock-hoist/README.md)
+- [request.ts](./src/demos/request/)
+- [jest.mock 使用](./src/demos/service/README.md)
+- [快照测试](./src/demos/snapshot/)
 - [jest.spyOn](./src/demos/spyOn/README.md)
 
 还有一些带有可以通过访问页面查看页面的demo：

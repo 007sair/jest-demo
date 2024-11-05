@@ -1,19 +1,10 @@
-import { notification } from 'antd';
-import np from 'nprogress';
-/* eslint-disable no-param-reassign */
 /**
  * 封装fetch请求
  */
+
+import { notification } from 'antd';
+import np from 'nprogress';
 import queryString from 'query-string';
-
-const pendingRequests = new Map<string, AbortController>(); // 存储正在进行的请求的AbortController
-
-/**
- * Determine if a value is a FormData
- */
-function isFormData(val: unknown) {
-  return typeof FormData !== 'undefined' && val instanceof FormData;
-}
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
@@ -27,6 +18,12 @@ interface Result<T> {
   traceId?: string;
   success: boolean;
   error: boolean;
+}
+
+const pendingRequests = new Map<string, AbortController>(); // 存储正在进行的请求的AbortController
+
+function isFormData(val: unknown) {
+  return typeof FormData !== 'undefined' && val instanceof FormData;
 }
 
 export interface Config extends Omit<RequestInit, 'body'> {
@@ -53,10 +50,6 @@ const defaultConfig: Config = {
   credentials: 'include',
   headers: {
     'Content-Type': 'application/json',
-    /**
-     * @jd/sso-oidc-web 必须配置
-     * @link https://joyspace.jd.com/pages/7M5XsKbnFL81ije4jzWg
-     */
     'X-Requested-With': 'XMLHttpRequest',
   },
   showErrorUI: true,
