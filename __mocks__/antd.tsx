@@ -1,5 +1,5 @@
-import type { ColorPickerProps } from 'antd';
-import React from 'react';
+import type { ColorPickerProps, ConfigProviderProps } from 'antd';
+import React, { createContext } from 'react';
 
 // 模拟的主题数据
 const mockTheme = {
@@ -22,16 +22,18 @@ const notification = {
   error: jest.fn(),
 };
 
+// 创建主题 Context
+const MockThemeContext = createContext<ConfigProviderProps['theme']>({ token: { colorPrimary: '#1677ff' } });
+
+const ConfigProvider = ({ theme, children }: ConfigProviderProps) => (
+  <MockThemeContext.Provider value={theme}>{children}</MockThemeContext.Provider>
+);
+
 // 模拟 ColorPicker
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-const ColorPicker = ({ value, onChangeComplete, showText }: any) => (
-  <div data-testid="antd-color-picker">
-    <input
-      type="color"
-      value={value}
-      data-testid="color-input"
-      onChange={e => onChangeComplete({ toHexString: () => e.target.value })}
-    />
+// @ts-expect-error
+const ColorPicker = ({ value, onChangeComplete, showText }) => (
+  <div data-testid="mock-color-picker">
+    <input type="color" value={value} onChange={e => onChangeComplete({ toHexString: () => e.target.value })} />
     {showText && <span data-testid="color-text">{value}</span>}
   </div>
 );
@@ -42,6 +44,7 @@ module.exports = {
   theme,
   notification,
   ColorPicker,
+  ConfigProvider,
 };
 
 // 为了 TypeScript 类型检查，添加默认导出

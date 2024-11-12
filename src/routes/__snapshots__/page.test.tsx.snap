@@ -2,112 +2,34 @@
 
 exports[`Page.tsx should take a snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="container-box"
-  >
-    <main>
-      <h1
-        class="title"
+  <h2>
+    Demo
+  </h2>
+  <ul>
+    <li>
+      <a
+        data-testid="roter-link"
+        href="/act"
       >
-        Welcome to
-        <img
-          alt="Modern.js Logo"
-          class="logo"
-          src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/modern-js-logo.svg"
-        />
-        <p
-          class="name"
-        >
-          Modern.js
-        </p>
-      </h1>
-      <p
-        class="description"
+        /act
+      </a>
+    </li>
+    <li>
+      <a
+        data-testid="roter-link"
+        href="/global-style"
       >
-        Get started by editing 
-        <code
-          class="code"
-        >
-          src/routes/page.tsx
-        </code>
-      </p>
-      <div
-        class="grid"
+        /global-style
+      </a>
+    </li>
+    <li>
+      <a
+        data-testid="roter-link"
+        href="/wait-for"
       >
-        <a
-          class="card"
-          href="https://modernjs.dev/guides/get-started/introduction.html"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <h2>
-            Guide
-            <img
-              alt="Guide"
-              class="arrow-right"
-              src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-            />
-          </h2>
-          <p>
-            Follow the guides to use all features of Modern.js.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://modernjs.dev/tutorials/foundations/introduction.html"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <h2>
-            Tutorials
-            <img
-              alt="Tutorials"
-              class="arrow-right"
-              src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-            />
-          </h2>
-          <p>
-            Learn to use Modern.js to create your first application.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://modernjs.dev/configure/app/usage.html"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <h2>
-            Config
-            <img
-              alt="Config"
-              class="arrow-right"
-              src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-            />
-          </h2>
-          <p>
-            Find all configuration options provided by Modern.js.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://github.com/web-infra-dev/modern.js"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <h2>
-            Github
-            <img
-              alt="Github"
-              class="arrow-right"
-              src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-            />
-          </h2>
-          <p>
-            View the source code of Github, feel free to contribute.
-          </p>
-        </a>
-      </div>
-    </main>
-  </div>
+        /wait-for
+      </a>
+    </li>
+  </ul>
 </DocumentFragment>
 `;

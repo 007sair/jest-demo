@@ -15,6 +15,7 @@ export const useFetch = (url: string) => {
         setError(null);
       } catch (err) {
         setError(err as Error);
+        console.log(err);
       } finally {
         setLoading(false);
       }
